@@ -26,6 +26,6 @@ print(name_len_list)
 print(f"Is arsha enrolled: {'arsha' in webdevelopment or 'arsha' in ui_ux_design or 'arsha' in data_science_new}")
 
 name_tuple = []
-name_tuple.extend([webdevelopment[0:1], ui_ux_design[0:1], data_science_new[:1]])
+name_tuple.extend([webdevelopment[:1], ui_ux_design[0:1], data_science_new[:1]])
 name_tuple = tuple(name_tuple)
 print(name_tuple)
