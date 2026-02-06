@@ -1,28 +1,44 @@
 class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
     def show_details(self):
         print("Name:", self.name)
         print("Age:", self.age)
 
 
 class Employee(Person):
+    def __init__(self, name, age, employee_id):
+        super().__init__(name, age)   # call Person constructor
+        self.employee_id = employee_id
+
     def show_details(self):
-        print("Employee Details")
         print("Name:", self.name)
         print("Age:", self.age)
         print("Employee ID:", self.employee_id)
 
 
 class PartTime(Person):
+    def __init__(self, name, age, working_hours):
+        super().__init__(name, age)
+        self.working_hours = working_hours
+
     def show_details(self):
-        print("Part-Time Worker Details")
         print("Name:", self.name)
         print("Age:", self.age)
         print("Working Hours:", self.working_hours)
 
 
+
 class Consultant(Employee, PartTime):
+    def __init__(self, name, age, employee_id, working_hours, project_name):
+        Person.__init__(self, name, age)
+        self.employee_id = employee_id
+        self.working_hours = working_hours
+        self.project_name = project_name
+
     def show_details(self):
-        print("Consultant Details")
         print("Name:", self.name)
         print("Age:", self.age)
         print("Employee ID:", self.employee_id)
@@ -30,35 +46,22 @@ class Consultant(Employee, PartTime):
         print("Project Name:", self.project_name)
 
 
-person1 = Person()
-person1.name = "Alice"
-person1.age = 25
 
-employee1 = Employee()
-employee1.name = "Bob"
-employee1.age = 30
-employee1.employee_id = "EMP101"
+p = Person("Rahul", 25)
+e = Employee("Anita", 30, "EMP101")
+pt = PartTime("Karan", 22, 5.5)
+c = Consultant("Meera", 35, "202", 6.0, "AI Project")
 
-parttime1 = PartTime()
-parttime1.name = "Charlie"
-parttime1.age = 22
-parttime1.working_hours = 20.5
 
-consultant1 = Consultant()
-consultant1.name = "David"
-consultant1.age = 35
-consultant1.employee_id = "CONS201"
-consultant1.working_hours = 15.0
-consultant1.project_name = "AI Project"
 
-print("\n--- Person ---")
-person1.show_details()
+print("\nPerson Details")
+p.show_details()
 
-print("\n--- Employee ---")
-employee1.show_details()
+print("\nEmployee Details")
+e.show_details()
 
-print("\n--- PartTime ---")
-parttime1.show_details()
+print("\nPart Time Details")
+pt.show_details()
 
-print("\n--- Consultant ---")
-consultant1.show_details()
+print("\nConsultant Details")
+c.show_details()
