@@ -1,44 +1,43 @@
 class Vehicle:
-    def display_details(self):
-        print("Vehicle ID:", self._vehicle_id)
-        print("Base Rate:", self._base_rate)
-
-    def rental_charge(self):
-        return 0.0
-
+    def __init__(self, id, price):    
+        self.vehicle_id = id
+        self.base_price = price
 
 class Car(Vehicle):
-    def rental_charge(self):
-        return self._base_rate * self.num_seats
+    def __init__(self, id, price, seat):
+        super().__init__(id, price)
+        self.num_seat = seat
 
+    def show_detail(self):
+        print(f"\nId: ${self.vehicle_id}")
+        print(f"Price: ${self.base_price}")
+        print(f"Name: ${self.num_seat}\n")
+
+    def rental_charge(self):
+        return self.base_price * self.num_seat
 
 class Bike(Vehicle):
+    def __init__(self, id, price, type):
+        super().__init__(id, price)
+        self.bike_type = type
+
+    def show_detail(self):
+        print(f"\nId: ${self.vehicle_id}")
+        print(f"Price: ${self.base_price}")
+        print(f"Bike type: ${self.bike_type}\n")
+
     def rental_charge(self):
-        return self._base_rate * 0.5
+        return self.base_price * 0.5
+
+def calculate_rental(Vehicle):
+    return Vehicle.rental_charge() 
 
 
-def calculate_rental(vehicle):
-    return vehicle.rental_charge()
+car1 = Car("CAR001", 100.0, 4)
+bike1 = Bike("BIKE001", 80.0, "Scooter")
 
+car1.show_detail()
+bike1.show_detail()
 
-car1 = Car()
-car1._vehicle_id = "CAR001"
-car1._base_rate = 100
-car1.num_seats = 4
-
-
-bike1 = Bike()
-bike1._vehicle_id = "BIKE001"
-bike1._base_rate = 80
-bike1.bike_type = "Scooter"
-
-
-print("----- Car Details -----")
-car1.display_details()
-print("Rental Charge:", calculate_rental(car1))
-
-print()
-
-print("----- Bike Details -----")
-bike1.display_details()
-print("Rental Charge:", calculate_rental(bike1))
+print("Car Charge:", calculate_rental(car1))
+print("Bike Charge:", calculate_rental(bike1))
