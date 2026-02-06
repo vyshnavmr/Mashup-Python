@@ -10,7 +10,7 @@ class Person:
 
 class Employee(Person):
     def __init__(self, name, age, employee_id):
-        super().__init__(name, age)   # call Person constructor
+        super().__init__(name, age)
         self.employee_id = employee_id
 
     def show_details(self):
